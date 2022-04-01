@@ -1,7 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
-#include<string>
-
+#include <stdlib>
 
 using namespace std;
 
@@ -12,7 +10,7 @@ class Address
         Address(int h, string st, int appt, string c, string s, string pc);
         Address(int h, string st, string c, string s, string pc);
         bool comes_before(Address a) const;
-        void print();
+        void print() const;
 
         private:
         int house_number;
@@ -38,14 +36,13 @@ Address::Address(int h, string st, string c, string s, string pc)
 {
 
 
-
         house_number = h;
         street = st;
         city = c;
         state = s;
         postal_code = pc;
 }
-void  Address::print()
+void Address::print()const
 {
 
         cout << house_number << " " << street;
@@ -54,7 +51,7 @@ void  Address::print()
                 cout << city << ", " << state << ", " << postal_code << endl;
 }
 
-bool Address::comes_before(Address other)const
+bool Address::comes_before( Address other)const
 {
 
         return postal_code < other.postal_code;
@@ -65,8 +62,7 @@ bool Address::comes_before(Address other)const
 int main()
 {
 
-        Address aHouse(100, "N.University Dr.", NULL,"Edmond", "OK", 73034);
-
+        Address aHouse(100, "N.University Dr.", "Edmond", "OK", 73034);
 
         Address anApartment(201, "N.E. 89th St.", 305, "Oklahoma City", "OK", 73134);
 
@@ -85,6 +81,7 @@ int main()
 
 
 
+
         if (anApartment.comes_before(aHouse))
 
                 cout << " \nThe APARTMENT address comes before the HOUSE address\n";
@@ -92,4 +89,5 @@ int main()
                 cout << " \nThe APARTMENT address does not come before the HOUSE address\n";
 
         return 0;
-}
+
+    }
